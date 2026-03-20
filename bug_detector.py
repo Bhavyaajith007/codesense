@@ -20,7 +20,7 @@ class BugReport(BaseModel):
     overall_verdict: str  # "clean", "needs work", "critical"
 
 # --- The Agent ---
-model = GroqModel("llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+model = GroqModel("llama-3.3-70b-versatile")
 
 bug_detector = Agent(
     model=model,
