@@ -2,10 +2,9 @@ from pydantic import BaseModel
 from pydantic_ai import Agent
 from pydantic_ai.models.groq import GroqModel
 from ast_parser import parse_code
-from config import GROQ_API_KEY
 import os
-
-
+from config import GROQ_API_KEY
+os.environ["GROQ_API_KEY"] = GROQ_API_KEY if GROQ_API_KEY else ""
 
 # --- Structured Output Schema ---
 class CategoryScore(BaseModel):
@@ -21,7 +20,7 @@ class QualityReport(BaseModel):
     top_improvement: str
 
 # --- The Agent ---
-model = GroqModel("llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
+model = GroqModel("llama-3.3-70b-versatile")
 
 quality_agent = Agent(
     model=model,
