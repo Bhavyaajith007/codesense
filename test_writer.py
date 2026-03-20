@@ -5,7 +5,6 @@ from ast_parser import parse_code
 from config import GROQ_API_KEY
 import os
 
-os.environ["GROQ_API_KEY"] = GROQ_API_KEY
 
 # --- Structured Output Schema ---
 class TestCase(BaseModel):
@@ -19,7 +18,7 @@ class TestSuite(BaseModel):
     setup_notes: str
 
 # --- The Agent ---
-model = GroqModel("llama-3.3-70b-versatile")
+model = GroqModel("llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 
 test_agent = Agent(
     model=model,

@@ -4,7 +4,7 @@ from pydantic_ai.models.groq import GroqModel
 from config import GROQ_API_KEY
 import os
 
-os.environ["GROQ_API_KEY"] = GROQ_API_KEY
+
 
 # --- Structured Output Schema ---
 class ErrorExplanation(BaseModel):
@@ -15,7 +15,7 @@ class ErrorExplanation(BaseModel):
     prevention: str           # how to avoid this in future
 
 # --- The Agent ---
-model = GroqModel("llama-3.3-70b-versatile")
+model = GroqModel("llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 
 error_agent = Agent(
     model=model,

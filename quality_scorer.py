@@ -5,7 +5,7 @@ from ast_parser import parse_code
 from config import GROQ_API_KEY
 import os
 
-os.environ["GROQ_API_KEY"] = GROQ_API_KEY
+
 
 # --- Structured Output Schema ---
 class CategoryScore(BaseModel):
@@ -21,7 +21,7 @@ class QualityReport(BaseModel):
     top_improvement: str
 
 # --- The Agent ---
-model = GroqModel("llama-3.3-70b-versatile")
+model = GroqModel("llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 
 quality_agent = Agent(
     model=model,

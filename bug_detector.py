@@ -5,8 +5,6 @@ from ast_parser import parse_code
 from config import GROQ_API_KEY
 import os
 
-os.environ["GROQ_API_KEY"] = GROQ_API_KEY
-
 # --- Structured Output Schema ---
 class Bug(BaseModel):
     line: str
@@ -20,7 +18,7 @@ class BugReport(BaseModel):
     overall_verdict: str  # "clean", "needs work", "critical"
 
 # --- The Agent ---
-model = GroqModel("llama-3.3-70b-versatile")
+model = GroqModel("llama-3.3-70b-versatile", api_key=GROQ_API_KEY)
 
 bug_detector = Agent(
     model=model,
